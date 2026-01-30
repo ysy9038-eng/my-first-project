@@ -1,6 +1,5 @@
 package com.example.db.config;
 
-
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -22,9 +21,9 @@ public class MyBatisConfig {
         org.apache.ibatis.session.Configuration configuration =
                 new org.apache.ibatis.session.Configuration();
         
-        // DB column 명		Vo 속성명
-        // true : mem_name	memName
-        // false: mem_name	mem_name	(동일하게 작성)
+        // 			DB column 명		Vo 속성명
+        // true	: 	mem_name		memName
+        // false: 	mem_name		mem_name	(동일하게 작성됨)
         configuration.setMapUnderscoreToCamelCase(false);
 
         factoryBean.setConfiguration(configuration);
@@ -37,4 +36,3 @@ public class MyBatisConfig {
         return factoryBean.getObject();
     }
 }
-

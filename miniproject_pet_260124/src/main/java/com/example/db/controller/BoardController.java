@@ -1,141 +1,162 @@
 package com.example.db.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.db.dao.BoardDao;
-import com.example.db.vo.BoardVo;
-import com.example.db.vo.MemberVo;
+import com.example.db.dao.boarddao;
+import com.example.db.vo.boardVo;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/board/")
+@RequestMapping
 public class BoardController {
 
-	@Autowired
-	BoardDao boardDao;
+	public class boarddao {
 
+	}
+
+	@Autowired
+	boarddao boarddao;
+	
 	@Autowired
 	HttpServletRequest request;
 
 	@Autowired
 	HttpSession session;
-
-	// 1. 목록 보기(List)
-	@RequestMapping("list.do")
-	public String list(Model model) {
-		List<BoardVo> list = boardDao.selectList();
-		model.addAttribute("list", list);
-		return "board/board_list"; // list.jsp로 포워딩
-	}
-
-	@RequestMapping("insert_form.do")
-	public String insert_form() {
-	    return "board/board_write_form"; // 작성하신 JSP 파일명
+	
+	@Autowired
+	ServletContext application;
+	
+	@Autowired
+	public BoardController(BoardDao boardDao) {
+		super();
+		this.boarddao = boarddao;
+		
+	
 	}
 	
-	// f.method = "POST"
-	// /board/insert.do?b_subject=제목&b_content=내용
-	@PostMapping("insert.do")
-	public String insert(BoardVo vo, RedirectAttributes ra) {
+	// 입력폼띄우기
+		@RequestMapping("/write_form.do")
+		public String writeboard_form() {
 
-		// login 상태유무 체크
-		MemberVo user = (MemberVo) session.getAttribute("user");
-
-		// 로그아웃상태면
-		if (user == null) {
-
-			ra.addAttribute("reason", "session_timeout");
-			// response.sendRedirect("../member/login_form.do?reason=session_timeout")
-			return "redirect:../member/login_form.do";
+			return "board/write_form";
 		}
 
-		// 내용 : \n -> <br>변경
-		String b_content = vo.getB_content().replaceAll("\n", "<br>");
-		vo.setB_content(b_content);
+		// /visit/insert.do?name=홍길동&content=잘 들어가나?\r\n정말?&pwd=1234
+		// 등록
+		@RequestMapping("/board/writeboard_form.do")
+		public String insert(boardVo vo, Object mem_id) {
+			// parameter 받아서 boardVo로 포장해줘/ request도 줘
+			// content:\n -> <br> 변경
+			String content = vo.getBoard_content().replaceAll("\n", "<br>");
+			vo.setBoard_content(content);
 
-		// IP
-		String b_ip = request.getRemoteAddr();
-		vo.setB_ip(b_ip);
+			String ip = request.getRemoteAddr();
+			vo.setBoard_id(ip);
 
-		// 회원정보 넣기
-		vo.setMem_idx(user.getMem_idx());
-		vo.setMem_name(user.getMem_name());
+			// DB insert
+			int res = boarddao.insert(vo);
 
-		// DB insert
-		int res = boardDao.insert(vo);
-		return "redirect:list.do";
-
-	}// end:insert()
-
-	// 3.수정 폼으로 이동 (기존 데이터 조회 과정 필요)
-	@RequestMapping("modify.do")
-	public String modify(int b_idx, Model model ) {
-		BoardVo vo = (BoardVo) boardDao.selectOneFromIdx(b_idx);
-		// 수정을 위해 <br>을 다시 \n으로 변환 (textarea에 보여주기 위함)
-		if (vo.getB_content() != null) {
-			vo.setB_content(vo.getB_content().replaceAll("<br>", "\n"));
+			return "redirect:list.do";
+			// DispacherServlet에게 response.sendRedirect("list.do");하도록 정보제공
 		}
+
+
+	@RequestMapping("/edit_form.do")
+	public String edit_form(int idx, Model model) {
+
+		boardVo vo = boarddao.selectOne(idx);
+
+		// <br> -> \n
+		
+		String content = vo.getBoard_content().replaceAll("<br>", "\n");
+		vo.setBoard_content(content);
+		// request binding(model통해서)
 		model.addAttribute("vo", vo);
 
-		return "board/board_modify_form";
-	}
-	
-	@PostMapping("update.do")
-	public String update(BoardVo vo, RedirectAttributes ra) {
-	    int res = boardDao.update(vo); // DB 수정 실행
-	    
-	    if(res > 0) {
-	        // 리다이렉트 시 잠깐 보여줄 메시지 전달
-	        ra.addFlashAttribute("result", "update_success");
-	    }
-	    
-	    // 수정 후에는 목록으로 "리다이렉트" 하므로 RedirectAttributes가 필요함
-	    return "redirect:list.do"; 
+		return "visit/visit_modify_form";
 	}
 
-	/*
-	 * @RequestMapping("/board/update_form.do") public String update_form(int idx,
-	 * Model model) {
-	 * 
-	 * BoardVo vo = BoardDao.selectOneFromId(idx);
-	 * 
-	 * //<br> -> \n String content = vo.getContent().replaceAll("<br>", "\n");
-	 * 
-	 * //request binding(model통해서) model.addAttribute("vo",vo);
-	 * 
-	 * return "board/board_update_form"; }
-	 */
+	// 수정
+	// / /visit/update.do?idx=81&name=홍길동&content=동해물과&pwd=1234
+	@RequestMapping("/board/update.do")
+	public String update(boardVo vo) {
+		// parameter받아서 boardVo포장해서 달라는 의미
 
-	/*
-	 * @RequestMapping("/visit/modify_form.do") public String modify_form(int idx,
-	 * Model model) {
-	 * 
-	 * VisitVo vo = visitDao.selectOne(idx);
-	 * 
-	 * //<br> -> \n String content = vo.getContent().replaceAll("<br>", "\n");
-	 * 
-	 * //request binding(model통해서) model.addAttribute("vo",vo);
-	 * 
-	 * return "visit/visit_modify_form"; }
-	 */
+		// \n -> <br>
+		String content = vo.getBoard_content().replaceAll("\n", "<br>");
+		vo.setBoard_content(content);
+
+		// ip 받기
+		String ip = request.getRemoteAddr();
+		//vo.setip(ip);
+
+		// DB update
+		//int res = boarddao.update(vo);
+
+		return "redirect:list.do";
+	}
 
 //		삭제
 
 	// /visit/delete.do?idx=123
-	@RequestMapping("delete.do")
+	@RequestMapping("visit/delete.do")
 	public String delete(int idx) {
 
 		int res = boardDao.delete(idx);
 
 		return "redirect:list.do";
 	}
+
+//		   @RequestMapping("/visit/delete.do")
+//		   public String delete(int idx) {
+//		      
+//		      int      res   = visitDao.delete(idx);
+//		      
+//		      return "redirect:list.do";
+//		   }
+	@RequestMapping("/visit/list.do")
+	public String list(@RequestParam(name="search", defaultValue = "all") String search,
+						String search_text, Model model) {
+		
+		//if(search==null) search="all";
+		
+		//검색조건을 담을 Map
+		Map<String, Object> map = new HashMap()<String, Object>();
+		
+		if(search.equals("name")) {
+			//이름을 검색
+			map.put("name", search_text);
+			
+		}else if(search.equals("content")) {
+			//내용으로 검색
+			map.put("content", search_text);
+
+		}else if(search.equals("name_content")) {
+			//이름 + 내용으로 검색
+			map.put("name", search_text);
+			map.put("content", search_text);
+		}
+		
+		List<boardVo> list = boarddao.selectConditionList(map);
+		
+		model.addAttribute("list",list);
+		
+		return "visit/visit_list";
+		
+		
+	}
+}
+
 }

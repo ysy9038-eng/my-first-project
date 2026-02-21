@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.db.dao.VisitDao">
+
+
+	<!-- 조건별 조회 Map이 parameter로 전달되면 #{ map's key } 형식을 작성할 수 있다. -->
+	<select id="selectConditionList" parameterType="Map"
+		resultType="visit">
+
+		select * from visit
+
+		<trim prefix="where" prefixOverrides="or">
+
+			<if test="name!=null">
+				name like '%' || #{name} || '%'
+			</if>
+
+			<if test="content!=null">
+				or content like '%' || #{content} || '%'
+			</if>
+
+
+		</trim>
+
+		order by idx desc
+	</select>
+
+	<!-- idx에 해당되는 VisitVo 1개 얻어오기 mybatis parameter표현 #{ 변수명 }으로 표현 parameter가 
+		단일 Type(int,String)이면 변수명을 아무거나 작성해도 된다 일반적으로 column명으로 기록한다 -->
+	<select id="selectOne" parameterType="int" resultType="visit">
+		select * from visit where idx = #{ idx}
+	</select>
+
+	<!-- 추가 전달인자가 객체(VO)인 경우 변수처리는 반드시 객체내의 속성명만 사용할 수 있다 -->
+	<insert id="insert" parameterType="visit">
+		insert into visit values( seq_visit_idx.nextVal ,
+		#{ name },
+		#{ content } ,
+		#{ pwd } ,
+		#{ ip } ,
+		sysdate ,
+		sysdate)
+	</insert>
+
+	<!-- 수정 -->
+	<update id="update" parameterType="visit">
+		update visit set name = #{name},
+		content = #{content},
+		pwd = #{pwd},
+		ip = #{ip},
+		modifydate=sysdate
+		where idx=#{idx}
+	</update>
+
+	<!-- 삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from visit where idx = #{idx}
+
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

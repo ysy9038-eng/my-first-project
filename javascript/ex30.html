@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document30</title>
+ </head>
+ <body>
+  <!--
+	let 변수의 재선언과 재할당(대입)
+	재선언 불가능, 재할당 가능
+ -->
+	<script>
+		function chonghab(n){
+			let sum=0;
+			for(let i=1; i<=n; i++){
+				sum += i;
+			}
+			sum = 100;			// 재할당 가능
+			console.log(sum);	// 100
+			
+			let sum = 200;		// 재선언 불가
+			console.log(sum);
+		}
+		chonghab(10);
+	</script>
+ </body>
+</html>

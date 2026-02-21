@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document46</title>
+ </head>
+ <body>
+   <div id="container">
+	<img id="cover" src="C:/ymca-ysy/web/html/images/zootopia.jpg">
+  </div>
+  <script>
+	// Document45 → 익명 함수로 바꿔보기!
+	let cover =document.getElementById('cover');
+
+	
+	// 마우스가 이미지 위로 올라왔을 때
+	cover.addEventListener("mouseover",function(){
+		cover.src="C:/ymca-ysy/we/html/images/Harrypotter.webp";
+	} );
+	
+	// 마우스가 이미지 밖으로 나갔을 때
+	cover.addEventListener("mouseout", function(){
+		cover.src="C:/ymca-ysy/web/html/images/OIP.webp";
+	});
+
+  </script>
+ </body>
+</html>

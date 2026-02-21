@@ -1,0 +1,28 @@
+<!--
+ <table>
+ <tr><th>2단</th></tr>
+ <tr>2*1=2</tr>
+ <td></td>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document22 구구단 table</title>
+ <link rel="stylesheet" href="C:/ymca-ysy\/web/javascript/css/table.css">
+ </head>
+ <body>
+ <script>
+ let dan, num;
+	for( dan=2; dan<10; dan++){
+	document.write("<table>");/* 단위2로시작하려고 했으면 여기서부터시작*/
+	document.write("<tr><th>"+dan+"단</th></tr>");
+	for( num=1; num<10; num++){
+		document.write("<tr><td>"+dan+"x"+num+"="+dan*num+"</td></tr>");
+	}
+	document.write("</table>");
+}
+</script>
+	
+ </body>
+</html>

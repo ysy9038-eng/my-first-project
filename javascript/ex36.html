@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document36</title>
+ </head>
+ <body>
+<!--
+	익명 함수
+	이름이 없는 함수
+	변수에 담아서 사용
+	변수 = 함수;
+	
+	let 변수명 = function(){...};
+	변수명();		// 호출
+-->
+<script>
+	// 1. 익명 함수
+	let hello = function(){
+		document.write("익명 함수 실행!<br>");
+	};
+	hello();
+	
+	// 2. 콜백 함수
+	function run( callback ){
+		document.write("run() 실행 <br>");
+		callback();	// 전달받은 함수 실행
+		document.write("run() 종료 <br>");
+	}
+	run( function(){
+		document.write("콜백함수 실행!<br>");
+	});
+	
+</script>
+ </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document14</title>
+ </head>
+ <body>
+	<h1>HTML 문서의 목록</h1> 
+		- 상위와 하위가 있는 체계화된 목록을 만들 때 사용		<br>
+		- 정의 목록(DL : Definition List)				<br>
+		- 번호 없는 목록(UL : Unordered List)			<br>
+		- 번호 있는 목록(OL : Ordered List)			<br>
+	
+	<h2>정의 목록</h2>
+	<h3>DL 태그</h3>
+		- 정의 목록의 태그								<br>
+		- 그 내용을 갖는 요소(element)로는				<br>
+		정의 목록 제목(DT : Definition Title),			<br>
+		정의 목록 데이터(DD : Definition Data)로 이루어져 있다. <br>
+		
+	<h3>DT 태그</h3>
+		- 정의 목록의 제목.								<br>
+		- 자동 줄바꿈 적용, 들여쓰기 적용					<br>
+		- 종료 태그 선택적 사용							<br>
+		
+	<h3>DD 태그</h3>
+		- 정의 목록의 데이터							<br>
+		- 자동 줄바꿈 적용, 들여쓰기 적용					<br>
+		- 종료 태그 선택적 사용							<br>
+	<br><br>
+	<DL>
+		<DT>목록 제목1
+			<DD>목록 내용 1-1</DD>
+			<DD>목록 내용 1-2</DD>
+		</DT>
+		<DT>목록 제목 2
+			<DD>목록 내용 2-1
+			<DD>목록 내용 2-2
+		</DL>
+		<H2>번호 없는 목록</H2>
+		<h3>UL 태그</h3>
+			- 번호 없는 목록의 태그						<br>
+			- 목록 항목(LI : List item)이 하위 속성으로 들어감.<br>
+		
+		<h3>LI 태그</h3>
+			- 목록 항목 태그							<br>
+			- 자동 줄바꿈 적용, 들여쓰기 적용.				<br>
+			- 종료 태그 선택적 사용						<br>
+			
+		<h3>UL요소와 LI요소(element)에서 사용되는 속성(attribute) : type</h3>
+			- UL 태그에 type이 지정되는 경우 하위 태그인 LI 태그에도 적용 됨. <br>
+			
+		<h3>각 값이 어떻게 나타나는지, 기본값은 어떤지 -> 브라우저에 따라 다름 </h3>
+		
+		<br>
+		<LI type="disc">	값이 "disc"	: 꽉 찬 원으로 표현.			<br>
+		<LI type="circle">	값이 "circle" : 원의 테두리로 표현			<br>
+		<LI type="square">	값이 "square" : 꽉 찬 네모로 표현.		<br>
+		
+		<br>
+		<UL type="square">
+			<LI>번호 없는 목록 항목 1</LI>
+			<LI>번호 없는 목록의 항목 2</LI>
+			<LI>번호 없는 목록의 항목 3</LI>
+	
+		<UL type="circle">
+			<LI>번호없는 목록 항목3-1</LI>
+			<LI>번호 없는 목록의 항목3-2</LI>
+			</UL>
+			<LI>번호 없는 목록의 항목4</LI>
+			<UL type="disc">
+				<LI>번호 없는 목록의 항목 4-1</LI>
+				<LI>번호 없는 목록의 항목 4-2</LI>
+		</UL>
+		</UL>
+		<UL type="disc">
+			<LI>번호 없는 목록 항목 A
+			<UL>
+				<LI>번호 없는 목록 항목 A-1
+				<LI>번호 없는 목록 항목 A-2
+				<UL type="square">
+					<LI>번호 없는 목록 항목 A-2-a
+					<LI>번호 없는 목록 항목 A-2-b
+				</UL>
+				<LI>번호 없는 목록 항목 A-3
+				</UL>
+				<LI>번호 없는 목록 항목 B
+				<LI>번호 없는 목록 항목 C
+			</UL>
+			
+			<br>
+			<br>
+			<hr>번호 있는 목록</h2>
+			<h3>OL 태그</h3>
+				- 번호 있는 목록의 태그								 <br>
+				- 내부에 가지는 태그로는 목록 항목(LI : List Item)이 있음 <br>
+			<h3>LI 태그</h3>
+				- 목록 항목 태그									<br>
+				- 자동 줄바꿈 적용, 들여쓰기 적용						<br>
+				- 종료 태그 선택적 사용								<br>
+				
+			<h3>OL 태그와 LI 태그에서 사용되는 속성 : type</h3>
+				- OL태그에 type이 지정되는 경우 하위 태그인 LI태그에도 적용됨 <br>
+				- 로마숫자 대/소문자, 알파벳 대/소문자, 숫자					<br>
+				- OL태그 추가 속성 : start="값"							<br>
+				
+			<br>
+			<OL type="A">
+				<LI>번호 있는 목록의 항목1</LI>
+				<LI>번호 있는 목록의 항목2</LI>
+				<LI>번호 있는 목록의 항목3</LI>
+				<LI>번호 있는 목록의 항목4</LI>
+				<OL type="1">
+					<LI>번호 있는 목록의 항목 4-1</LI>
+					<LI>번호 있는 목록의 항목 4-2</LI>
+				</OL>
+				<LI>번호 있는 목록의 항목5</LI>
+				<LI>번호 있는 목록의 항목6</LI>
+			</OL>
+			<OL type ="i">
+				<LI>번호 있는 목록의 항목 1
+				<LI>번호 있는 목록의 항목 2
+				<OL type="a" start="1">
+					<LI>번호 있는 목록의 항목 2-1
+					<LI>번호 있는 목록의 항목 2-2
+					<LI>번호 있는 목록의 항목 2-3
+				</OL>
+			</OL>
+				
+	</body>
+</html>

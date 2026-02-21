@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document29</title>
+ </head>
+ <body>
+  <!--
+	var 변수
+	재할당(대입) 가능, 재선언 가능	→ 위험!!
+ -->
+	<script>
+		function addNumber(num1, num2){
+			return num1+num2;
+		}
+		var sum = addNumber(10, 20);
+		console.log(sum);	// 30
+		sum = 50;			// 재할당 가능
+		console.log(sum);
+		var sum = 100;
+		console.log(sum);	// 재선언 가능
+	</script>
+ </body>
+</html>

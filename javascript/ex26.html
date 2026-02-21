@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document26 배열 Array</title>
+ </head>
+ <body>
+  	<h1>배열 값 꺼내기</h1>
+	
+	<h2>인덱스 사용</h2>
+	<script>
+		// 배열명[index]
+		let animals =["dog", "cat", "bird", "snake"];
+		document.write("index [0] : "+animals[0]+"<br>");
+		document.write("index [1] : "+animals[1]+"<br>");
+		document.write("index [2] : "+animals[2]+"<br>");
+		document.write("index [3] : "+animals[3]+"<br>");
+	</script>
+	
+	<h2>for문 사용</h2>
+	<script>
+		let fruits = ["apple", "banana", "grape", "peach", "mango"];
+		// length 사용
+		for( let i=0; i<fruits.length; i++ ){
+			document.write("<b>index ["+i+"] 번째 요소 : "+fruits[i]+"</b><br>");
+		}
+	</script>
+	
+	<h2>for...of문 사용</h2>
+	<script>
+		let cookies = ["초코쿠키", "버터쿠키", "아몬드쿠키", "두바이쫀득쿠키", "마카다미아쿠키"];
+		for( let c of cookies ){
+			document.write("쿠키 : "+c+"<br>");
+		}
+	</script>
+	
+	<h2>forEach() 사용</h2>
+	<script>
+		let friends = ["은정", "소정", "정은", "서윤", "민수"];
+		friends.forEach(function(item, i){
+			document.write(i+" : "+item+"<br>");
+		});
+	</script>
+	
+	<h2>구조 분해 할당</h2>
+	<script>
+		let subjects = ["java", "html", "css", "js", "jsp", "spring"];
+		let [first, second, third] = subjects;
+		
+		document.write(first+"<br>");
+		document.write(second+"<br>");
+		document.write(third+"<br>");
+	</script>
+ </body>
+</html>

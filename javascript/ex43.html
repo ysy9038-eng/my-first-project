@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document43</title>
+  <link rel="stylesheet" href="C:/ymca-ysy/web/javascript/css/event.css">
+ </head>
+ <body>
+  <div id="item">
+	<img src="C:/ymca-ysy/web/html/images/eunwoo.jpg">
+	<button class="over" id="open" onclick="showDetail()">상세 설명 보기</button>
+	
+	<div class="detail" id="close">
+		<h4>은우차</h4>
+		<p>
+			차은우는 아스트로의 멤버이다.<br>
+			차은우는 군대에 갔다.
+		</p>
+		
+		<button onclick="hideDetail()">상세 설명 닫기</button>
+	</div>
+</div>
+
+<script>
+	// 상세 설명 화면에 표시
+	function showDetail(){
+		document.querySelector('#close').style.display="block";	// 화면에 표시
+		document.querySelector('#open').style.display="none";	// 요소를 숨김, none 공간자체도 없어짐
+	}
+	// 상세설명 화면에 숨김
+	function hideDetail(){
+		document.querySelector('#close').style.display="none";
+		document.querySelector('#open').style.display="block";
+	}
+</script>
+ </body>
+</html>

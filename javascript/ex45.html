@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document45</title>
+ </head>
+ <body>
+  <div id="container">
+	<img id="cover" src="C:/ymca-ysy/web/html/images/zootopia.jpg">
+  </div>
+  <script>
+	let cover =document.getElementById('cover');
+	
+	// 마우스가 이미지 위로 올라왔을 때 
+	cover.addEventListener("mouseover", changePic);
+	
+	// 마우스가 이미지 밖으로 나갔을 때 
+	cover.addEventListener("mouseout", originPic);
+	
+	function changePic(){
+		cover.src="C:/ymca-ysy/web/html/images/bunny.jpg";
+	}
+	function originPic(){
+		cover.src="C:/ymca-ysy/web/html/images/zootopia.jpg";
+	}
+  </script>
+ </body>
+</html>

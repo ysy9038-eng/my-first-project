@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document42</title>
+ </head>
+ <body>
+    <link rel="stylesheet" href="C:/ymca-ysy/web/javascript/css/function.css">
+ </head>
+ <body>
+	<ul>
+		<li><a  onclick="changeBg('green')">Green</a></li>
+		<li><a  onclick="changeBg('orange')">Orange</a></li>
+		<li><a  onclick="changeBg('purple')">Purple</a></li>
+	</ul>
+	<!-- 색상 바뀌는 박스 -->
+	<div id="result"></div>
+	
+	
+<script>
+	function changeBg(color){
+		let result = document.querySelector('#result').style.backgroundColor = color;
+	}
+</script>
+ </body>
+ </body>
+</html>

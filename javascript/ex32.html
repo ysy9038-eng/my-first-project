@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document32</title>
+ </head>
+ <body>
+  <!--
+   변수의 호이스팅
+   상황에 따라 선언과 할당을 분리,
+   선언부분을 스코프의 최상단으로 끌어올린것처럼 효과.
+ -->
+	<script>
+		var a = 10;
+		let b = 20;
+		function showNum(){
+			console.log("a is : "+a);
+			console.log("b is : "+b);
+			
+			console.log("x is : "+x);	// undefined
+			console.log("y is : "+y);	// ReferenceError
+			var x = 30;
+			let y = 40;
+		}
+		showNum();
+	</script>
+ </body>
+</html>

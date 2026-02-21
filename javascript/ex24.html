@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document24 continue 사용</title>
+ </head>
+ <body>
+ 	<h2>1부터 20까지 짝수끼리의 합, 이때 짝수값과 그때의 합</h2>
+	<script>
+		let i;	// 반복 변수
+		let sum=0; // 합
+		let n=20;
+		for( i=1; i<=n; i++ ){
+			if( i%2 === 1 ){	// 홀수
+				continue;		// for문의 증감식
+			}
+			sum+=i;	// 짝수
+			// 짝수값과 그때의 합
+			document.write("짝수 : "+i+", 합 : "+sum+"<br>");
+		}
+	</script> 
+ </body>
+</html>

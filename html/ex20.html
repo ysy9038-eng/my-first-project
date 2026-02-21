@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document20</title>
+ </head>
+ <body>
+  <h2>INPUT 태그의 type들</h2>
+  
+  <h3>type="text"</h3>
+	- INPUT 태그의 기본값 -> type="text"						<br>
+	- 아무 속성 지정하지 않으면 자동으로 text 가 적용됨				<br>
+	- value="초기값 지정"										<br>
+	현재 input 태그 안에 들어있는 값을 의미						<br>
+	<br>
+	<form>
+		단순 텍스트1 :<input type="text" name="text1" >		<br>
+		단순 텍스트2 :<input type="text" name="text2" value="초기값 넣음">
+	</form>
+	
+	<br>
+	<h3>size, maxlength</h3>
+		size	: 화면에 보이는 가로 길이						<br>
+		maxlength: 입력 가능한 최대 글자수 제한					<br>
+	<FORM>
+		텍스트1:<input type="text" name="one" size="10" maxlength="20"> <br>
+		텍스트2:<input type="text" name="two" size="5" maxlength="3">		<br>
+	</FORM>
+	
+	<br>
+	<h3>type="password"</h3>
+		- 입력은 보이지만 화면에는 ***로 표시됨						<br>
+		- 보안때문에 글자가 숨겨질 뿐, 실제로는 value 값으로 전달됨	<br>
+	<form>
+	id: <input type="text" name="id">						<br>
+	pw: <input type="password" name="pw">					<br>
+	</form>
+	
+	<br>
+		<h3>type="radio"</h3>
+		- 단일 선택(항상 1개만 선택 가능)							<br>
+		- 한 그룹안의 radio는 name이 같아야하고, value는 달라야함	<br>
+		- checked	: 초기값 선택시 사용						<br>
+		
+		<h3>type="checkbox"</h3>
+		- 다중 선택 가능										<br>
+		- 같은 name을 사용하는 경우 배열 형식으로 전달됨				<br>
+		- checked	: 기본 선택 가능							<br>
+		
+	
+	<form>
+		<h4>현재 살고있는 지역</h4>	
+		<input type="radio" name="living" value="daegu">대구 &nbsp;&nbsp;
+		<input type="radio" name="living" value="busan">부산	&nbsp;&nbsp;
+		인천<input type="radio" name="living" value="incheon">&nbsp;&nbsp;
+		서울<input type="radio" name="living" value="seoul">
+		
+		<h4>여행 가고싶은 곳</h4>	
+		제주도<input type="checkbox" name="city" value="제주도"checked>
+		순천<input type="checkbox" name="city" value="순천">
+		대전<input type="checkbox" name="city" value="대전">
+		춘천<input type="checkbox" name="city" value="춘천">
+		
+		<h4>취미</h4>			
+		여행<input type="checkbox" name="hobby" value="여행">
+		독서<input type="checkbox" name="hobby" value="독서">
+		요리<input type="checkbox" name="hobby" value="요리">
+	</form>
+	
+	<br>
+	<h3>type="button"</h3>
+		- 자바스크립트 이벤트와 함께 사용						<br>
+	<h3>type="image"</h3>
+		- 이미지를 버튼처럼 사용								<br>
+	<br>
+	<form>
+		<input type="button" name="버튼" value="저장">
+		<input type="image" name="img" 
+		src="C:/ymca-ysy/web/html/images/Harrypotter.webp" onClick="alert('Harrypotter')"><br>
+	</form>
+	
+	<br>
+	<h3>type="hidden"</h3>
+		- hidden 은 사용자에게는 보이지 않지만 서버로 데이터를 보내야 할 때 사용			<br>
+		
+		
+		<form>
+			아무것도 안보임:<input type="hidden" name="hbtn" value="감춰서 전달될 값">	<br>
+			버튼을 누르세요:<input type="button" name="hbtn" value="클릭">
+		</form>
+		
+ </body>
+</html>

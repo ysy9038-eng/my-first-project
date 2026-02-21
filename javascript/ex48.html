@@ -1,0 +1,55 @@
+<!-- 
+	DOM(Document Object Model) Tree 구조
+			<p id="attr">Hello DOM</p>
+		
+		요소 노드( Element Node )
+			- HTML 태그 자체
+		
+		텍스트 노드( Text Node )
+			- 태그 안에 들어 있는 글자
+			
+		속성 노드( Attribute Node )
+			- 태그의 속성
+-->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document48</title>
+  <style>
+	#container {
+		width:500px;
+		margin:10px auto;
+		padding:20px;
+	}
+	#info {
+		margin-top:20px;
+	}
+  </style>
+ </head>
+ <body> 
+ <div id="container">
+	<h2>DOM 요소 추가</h2>
+	<a onclick="addP(); this.onclick='';">더보기</a>
+	
+	<div id="info"></div>
+	
+ </div>
+ <script>
+  function addP(){
+	  // 1.<p> 요서 생성		: <p> 와 같은 새로운 요소 생성함
+	  let newP = document.createElement("p");
+	  
+	  // 2. 텍스트 노드 생성	: 태그 없이 순수 텍스트만 담긴 노드 생성
+	  let txtNode = document.createTextNode("DOM은 Document Object Model의 줄임말입니다.");
+	  
+	  // 3. txtNode 를 newP 요소의 자식으로 추가
+	  newP.appendChild(txtNode);
+	  //	<p>DOM은 Document Object Model의 줄임말입니다.</p>
+	  
+	  // 4. 완성된 p 요소를 div 요소에 추가
+	  document.getElementById('info').appendChild(newP);
+	  // <div><p>DOM은 Document Object Model의 줄임말입니다.</p></div>
+	}
+ </script>
+ </body>
+</html>

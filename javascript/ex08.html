@@ -1,0 +1,33 @@
+<!--
+	confirm
+	- 확인/취소 버튼
+	- 확인 → true / 취소 → false 값 반환(리턴)
+	- 둘 중 어떤 버튼을 눌렀는지 판단하여 프로그램 제어 가능
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+	confirm("메세지");
+	
+	let result = confirm("메세지");
+-->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document08 간단한 입출력 -confirm</title>
+ </head>
+ <body>
+  <h2>confirm() 사용</h2>
+  <button onclick="checkConfirm()">확인/취소 테스트</button>
+  
+  <script>
+	function checkConfirm(){
+		let result = confirm("정말 실행하시겠습니까?");
+		
+		if( result ){
+			alert("확인을 눌렀습니다!");
+		}else {
+			alert("취소를 눌렀습니다!");
+		}
+	}
+  </script>
+  </button>
+ </body>
+</html>

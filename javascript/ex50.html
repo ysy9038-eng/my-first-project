@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Document50</title>
+ </head>
+ <body>
+  <h2 id="text">클릭 이벤트</h2>
+  <button id="btn">클릭</button>
+  
+  <script>
+	let btn = document.getElementById('btn');
+	
+	btn.addEventListener("click", function(){
+		document.getElementById('text').innerHTML="addEventListener 실행!";
+	});
+  </script>
+ </body>
+</html>

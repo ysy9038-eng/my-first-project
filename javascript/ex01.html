@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document01 내부 작성</title>
+ <style>
+	body { text-align:center; }
+	#heading { color:orange; }
+	#text {
+		color:gray;
+		font-size:15px;
+	}
+ </style>
+ </head>
+ <body>
+  <h2 id="heading">자바스크립트</h2>
+  <p id="text">위의 텍스트를 크릭하시오.</p>
+  
+  <script>
+  // 주석 사용 주석주석 html 내부기 때문에 html 주석 사용
+	let heading = document.querySelector('#heading');
+	heading.onclick = function(){
+		heading.style.color="red";
+	}
+  </script>
+ </body><!---->
+</html>

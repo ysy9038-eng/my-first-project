@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document49</title>
+  <style>
+	#container {
+		width:500px;
+		margin:10px auto;
+		padding:20px;
+	}
+	#info {
+		margin-top:20px;
+	}
+  </style>
+ </head>
+ <body>
+  <div id="container">
+	<h2>이미지 요소와 속성 생성@!</h2>
+	
+	<a onclick="addImage(); this.onclick='';">더보기</a>
+	
+	<div id="info"></div>
+  </div>
+  
+  <script>
+	function addImage(){
+		// img 요소 생성
+		let newImg = document.createElement("img");
+		// src 속성 생성
+		let srcNode = document.createAttribute("src"); // 속성="값"
+		// 속성="값" 넣기
+		srcNode.value="C:/ymca-ysy/web/html/images/zootopia.jpg";
+		
+		// img 요소에 src 속성(Attribute) 넣기
+		newImg.setAttributeNode(srcNode);
+		// div 요소에 img 요소 넣기
+		document.getElementById('info').appendChild(newImg);
+		
+		// 1. <p> 요소 생성
+      let newP = document.createElement("p");
+
+      // 2. 텍스트 노드 생성 (src 값 포함)
+      let txtNode = document.createTextNode(
+        "현재 이미지 경로는 " + newImg.getAttribute("src") + " 입니다."
+      );
+
+      // 3. 텍스트를 <p>의 자식으로 추가
+      newP.appendChild(txtNode);
+
+      // 4. 완성된 <p>를 #info에 추가
+      document.getElementById("info").appendChild(newP);
+	}
+  </script>
+ </body>
+</html>

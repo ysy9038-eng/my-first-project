@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document15</title>
+ </head>
+ <body>
+  <script>
+	let num = prompt("숫자를 입력해주세요.");
+	
+	if( num !== null && num.trim() !==""){/* trim은 없어도 됨*/
+		if( num%3 === 0){
+			alert("3의 배수 O")
+		}else{
+			alert("3의 배수 X");
+		}
+	}else{
+		alert("입력이 취소되었습니다.");
+	}
+	
+  </script>
+ </body>
+</html>

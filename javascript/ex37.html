@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document37</title>
+ </head>
+ <body>
+<!--
+	화살표 함수
+	- 익명함수를 더 짧게 작성하는 문법
+	- function 키워드 쓰지않고, => 로 표현
+	- 매개변수 하나인 경우	→() 생략 가능
+	- 실행문 하나인 경우	→{} 생략 가능
+	- 한 줄짜리 return문인 경우	 → return 생략 가능
+-->  
+<script>
+	// 기본 익명 함수
+	let hello = function(){
+		document.write("기본 익명 함수<br>");
+	};
+	hello();
+	document.write("<hr color= 'blue'>");
+	
+	// 화살표 함수
+	let hello2 = () => document.write("기본 화살표 함수<br>");	
+	hello2();
+	document.write("<hr color='blue'>");
+	
+	// 매개변수 한개	: () 생략 가능
+	let say = name =>{
+		document.write("안녕, "+name);
+	};
+	say("jsp");
+	// 실행문 한개		: {} 생략 가능
+	let say2 = name => document.write("잘가~"+name+"아 <br>");
+	say2("ㅎㅎ");
+	document.write("<hr color= 'green'>");
+	
+	// return 0
+	let divide = (a, b) => {
+		return a/b;
+	}
+	divide(10, 2);
+	document.write("devide(10, 2) 결과 : "+divide(10,2)+"<br>");
+	document.write("<hr color='yellow'>");
+	
+	// return 생략
+	let a = () => "Hello JS~";
+	let hello3 = a();
+	document.write(hello3);
+</script>
+ </body>
+</html>

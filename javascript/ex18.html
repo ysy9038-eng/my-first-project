@@ -1,0 +1,58 @@
+<!--
+	자바스크립트에서 숫자로 변환 기능
+	Number("");
+	- 문자열 전체 확인
+	- 정수/실수
+	- ""(빈문자열), " "(공백)일 경우 0
+	- true → 1 / flase → 0
+	
+	parseInt("");
+	- 숫자 앞부분만 정수 변환(소수점 버림)
+	- 정수로만 변환
+	- ""(빈문자열), " "(공백)일 경우		→ NaN
+	- true  → NaN
+	
+	공통
+	- 공백 제거 후 처리(변환)
+-->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document18</title>
+ </head>
+ <body>
+  <script>
+	let a = Number("123");	
+	let b = parseInt("123");	
+	console.log( a+" : "+b);  
+	
+	let c = Number("10px");	// NaN
+	let d = parseInt("10px");// 10 → 숫자로 시작해야함!
+	console.log(c+":"+d);
+	
+	let e = Number("3.14");
+	let f = parseInt("3.14");	// 무조건 정수 리턴 → 소수점 버림
+	console.log(e+" : "+f);
+	
+	let g = Number("	123		");
+	let h = parseInt("	123		");
+	console.log(g+" : "+h);	// 모두 공백 제거 후 처리
+	
+	let i=Number("	");		//0
+	let j=parseInt("	");	// NaN : 숫자 아님
+	console.log(i+" : "+j);
+	
+	let k = Number("");		// 0
+	let l = parseInt("");	//	NaN
+	console.log(k+" : "+1);
+	
+	let m = Number(true);	// 1
+	let n = Number(false);	// 0
+	
+	let o = parseInt(true);	// Nan
+	let p = parseInt(false);	// NaN
+	console.log("Number()의 결과 : "+m+","+n);
+	console.log("parseInt() 결과 : "+o+","+p);
+	</script>
+ </body>
+</html>

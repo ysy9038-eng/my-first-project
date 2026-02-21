@@ -1,0 +1,28 @@
+<!--
+	prompt()
+	- 문자열 입력을 받는 팝업
+	- 입력값 → 문자열(string)
+	- 취소 버튼 → null 반환(리턴)
+	- 입력값을 변수로 저장 후 사용 가능
+	
+	prompt("메세지");
+	prompt("메세지", "기본값");
+-->
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document09 간단한 입출력 -prompt</title>
+ </head>
+ <body>
+  <h2>prompt() 사용</h2>
+  <script>
+	let name = prompt("이름을 입력하시오.", "김자바");
+	
+	if( name === null){
+		alert("취소버튼을 눌렀습니다.");
+	}else{
+		alert(name+"님 반갑습니다.");
+	}/* alert("알림"); 사용 가능, 자바언어는 스크립트 안에 */
+  </script>
+ </body>
+</html>

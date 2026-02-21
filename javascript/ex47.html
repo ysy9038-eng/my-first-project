@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document47</title>
+ </head>
+ <body>
+  <button onclick="innerhtml()">innerHTML로 표시</button>
+  <button onclick="innertext()">innerText로 표시</button>
+  
+  <h2>현재 시간</h2>
+  <div id ="current"></div>
+  
+  <script>
+	let now = new Date();
+	
+	function innerhtml(){
+		document.getElementById("current").innerHTML ="<b>"+now+"</b>";
+ 	}
+	function innertext(){
+		document.getElementById("current").innerText="<b>"+now+"</b>";
+	}
+/*
+	innerHTML
+		- HTML 태그가 적용됨
+	
+	innerText
+		- HTML 태그가 텍스트 그대로 출력
+*/
+  </script>
+ </body>
+</html>

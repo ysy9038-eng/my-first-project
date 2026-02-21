@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document19</title>
+ </head>
+ <body>
+	<h1>FORM 태그</h1>
+		- 사용자가 입력한 데이터를 서버로 전달하는 영역을 만드는 태그				<br>
+		- form 태그 안에 input, select, textarea 등 모든 입력 요소가 들어감		<br>
+		- 전송 방법 method 속성											<br>
+		- 어디로 보낼것인지 action 속성										<br>
+		
+	<h2>form 태그의 내부 요소는 name="값" 쌍으로 전달됨</h2>
+		name 속성이 key, value 속성이 value 역할.							<br>
+		name 속성은 절대 중복되면 안됨										<br>
+		
+	<h2>input 태그</h2>
+		- form 에서 가장 중요한 태그											<br>
+		- input 은 단일(싱글)태그	: 종료태그 없음							<br>
+	<h3>다양한 type들</h3>
+		text	한 줄 텍스트 입력	<input type="text">						<br>
+		password	비밀번호 입력(**** 처리)								<br>
+		radio	단일 선택													<br>
+		checkbox	다중 선택												<br>
+		button		클릭 버튼												<br>
+		submit		전송 버튼												<br>
+		reset		초기화												<br>
+		hidden		사용자에게 보이지 않지만 서버로 값 보냄						<br>
+		file		파일 업로드											<br>
+		
+	<h2>button 태그</h2>
+		- input 보다 유연성 및 기능 확장이 가능해서 많이 사용됨					<br>
+		- javascript에서 활용 많이 됨										<br>
+	<h3>submit, reset 속성</h3>
+		- form 태그 내부에서만 동작하는 버튼									<br>
+		submit	form 데이터를 전송											<br>
+		reset	form 입력값 전체 초기화										<br>
+		
+	<h2>SELECT, OPTION 태그</h>
+		- 사용자에게 선택 목록 제공											<br>
+		- 드롭다운 목록 생성	
+		<br>
+	<h3>주요 속성</h3>
+		- size : 한번에 보여줄 항목 수										<br>
+		- selected : 기본 선택값 지정										<br>
+		
+	<h2>TEXTAREA 태그</h2>
+		- 여러줄 텍스트 입력할 때 사용										<br>
+	<h3>주요 속성</h3>
+		- rows, cols 길이 지정											<br>
+	<h2>FORM 전송 방식 method</h2>
+		- GET : 주소(URL)에 데이터 포함										<br>
+		- POST : 주소에 데이터를 노출하지 않음									<br>
+	<h2>action 속성</h2>
+		입력한 데이터를 처리할 페이지(URL) 지정									<br>
+		데이터를 보내려면 반드시 action과 method가 있어야 함						<br>
+</body>
+</html>

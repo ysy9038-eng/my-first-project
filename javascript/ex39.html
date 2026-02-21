@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document39</title>
+ </head>
+ <body>
+ <script>
+	let scores = [70, 85, 90, 60, 100];
+	
+	
+	// 총합
+	function sum(array){
+		let totalScore = 0;
+		for(let i=0; i<array.length; i++){
+			totalScore += array[i];
+		}
+		return totalScore;
+	}
+	
+	
+	/* function sum(array){
+		let s =0;	// 합
+		for( let a of array){
+			s += a;
+		}
+		return s;
+	}
+	*/
+
+	// 평균	: 총합을 구하는 함수 사용!
+	function avg(arr){
+		return sum(arr)/arr.length;
+	}
+	
+	
+	/* function avg(array){
+		return sum(array) / array.length;
+	}
+	*/
+	
+	// 최대값
+	function max(array){
+		let m = array[0];
+		for( let a of array){
+			if( a > m ){
+				m = a;
+			}
+		}
+		return m;
+	}
+	
+	// 배열
+	document.write("scores 배열 : "+scores+"<br>");
+	document.write("scores 총 합 : "+sum(scores)+"<br>");
+	document.write("scores 평균 : "+avg(scores)+"<br>");
+	document.write("scores 최대값 : "+max(scores)+"<br>");
+ </script>
+ </body>
+</html>

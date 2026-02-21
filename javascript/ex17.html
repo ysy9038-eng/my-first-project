@@ -1,0 +1,31 @@
+<!--
+	Number("")
+	parseInt("");
+	
+	
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <title>Document17</title>
+ </head>
+ <body>
+ <script>
+	let input = prompt("숫자");
+  if( input !== null && input.trim() !== ""){/*넣는 값이 널값이 아니고 넣는다 공백을 근데 공백은 0이 아니다*/
+	let num	= Number(input);	// Number() : 문자열 → 숫자 변환	
+	if( !isNaN(num) && num !== 0 ){
+		document.write("입력받은 숫자는 <b>"+num+"</b>입니다.");
+	}else{
+		document.write("숫자가 아니거나 0입니다.");
+	}
+}else {
+	document.write("취소이거나 공백입니다.");
+			}
+			
+ 
+</script>
+ </body>
+</html>

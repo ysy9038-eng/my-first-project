@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document38</title>
+ </head>
+ <body>
+ <!--
+	매개변수 기본값 
+-->
+<script>
+	function multiple(a, b=5, c=10){
+		return a * b + c;
+	}
+	
+	// 1) a, b, c 모두 인수를 넣는 경우	→ 기본값 사용 안함
+	let result1 = multiple(5, 10, 20);
+	document.write("<b>multiple(5, 10, 20) 결과 : "+result1+"</b>");
+	
+	document.write("<hr color='pink'>");
+	// 2) a, b 만 넣은 경우	→ c=10 기본값 사용
+	let result2 = multiple(10, 20);
+	document.write("<b>multiple(10,20) 결과 : "+result2+"</b>");
+	
+	document.write("<hr color='purple'>");
+	// 3) a 만 넣은 경우 → b=5, c=10 기본값 사용
+	let result3 = multiple(30);
+	document.write("multiple(30) 결과 : <b>"+result3+"</b></br>");
+	
+	document.write("<hr color='brown'>");
+	// 4) null
+	function welcome(name="손님"){
+		document.write(name+"환영합니다!<br>");
+	}
+	welcome();		// 기본값 적용
+	welcome(undefined);	// 기본값 사용
+	welcome(null);	// 기본값 적용 X
+</script>
+ </body>
+</html>

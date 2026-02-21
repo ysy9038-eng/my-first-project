@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document35</title>
+ </head>
+ <body>
+  <!--
+	return
+	- 함수 실행 결과로 돌아오는 결과값
+	- return을 만나면 함수 즉시 종료
+	
+	function 함수명(매개변수){
+		...
+		return 값;
+	}
+  -->
+  <script>
+		// 1. return 있는 함수
+		function addNum(x, y){
+			return x+y;
+		}
+		let result = addNum(3, 7);
+		document.write("addNum(3, 7)의 결과 : "+result+"<br>");
+		document.write("<hr color='red'>");
+		
+		// 2. return 만나면 함수 종료
+		function testReturn(){
+			document.write("함수 시작<br>");
+			return;	// 함수 종료
+			document.write("함수 종료 : 절대 실행 안됨");
+		}
+		testReturn();
+		document.write("<hr color='green'>");
+		
+		// 3. return 없는 함수
+		function noReturn(){
+			10+20;
+			let sum = 10+20;
+		}
+		let result2 = noReturn();
+		document.write("return 없는 함수 결과 : "+result2);	// undefined
+  </script>
+ </body>
+</html>

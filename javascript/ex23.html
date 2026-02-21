@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <title>Document23 break</title>
+ </head>
+ <body>
+	<h2>구구단 3단까지만 출력</h2>
+	<script>
+		let dan, num;
+		for( dan=2; dan<10; dan++){
+			if( dan === 4){ break; }
+			document.write("<h3>"+dan+"단</h3>");
+			for( num=1; num<10; num++ ){
+				document.write("<b>"+dan+"x"+num+"="+(dan*num)+"</b></br>");
+			}
+			document.write("<br>");
+		}
+		</script>
+ </body>
+</html>

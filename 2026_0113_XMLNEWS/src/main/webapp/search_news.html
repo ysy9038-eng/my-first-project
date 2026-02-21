@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Bootstrap 3.x -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+#box{
+	width:1000px;
+	margin: auto;
+	margin-top: 30px;
+	background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+/* 타이틀이나 헤더가 있다면 추가할 스타일 */
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    /* 폼 요소 간격 조절 */
+    .form-inline .form-control {
+        margin-right: 10px;
+        border-radius: 4px;
+    }
+
+    /* 검색 버튼 스타일 강화 */
+    .btn-primary {
+        padding: 6px 20px;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #286090;
+        transform: translateY(-1px); /* 살짝 떠오르는 효과 */
+    }
+
+    /* 구분선 스타일 */
+    hr {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+
+    /* 결과가 출력될 영역 (#disp) 스타일 */
+    #disp {
+        min-height: 300px; /* 결과가 없어도 최소 높이 유지 */
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+
+    /* 결과 테이블 내 이미지 크기 조절 (이전 답변 참고) */
+    #disp img {
+        width: 100px;
+        height: 140px; /* 도서 이미지는 세로가 더 길기 때문에 조정 */
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    /* 입력창 라벨 강조 */
+    label {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+</style>
+<script type="text/javascript">
+ 	
+ 	function find(){
+ 		
+ 		let b_name 	= $("#b_name").val().trim();
+ 		let page 	= $("#page").val();
+ 		let display	= $("#display").val();
+ 		
+ 		if(b_name == ""){
+ 			
+ 			alert("검색할 상품명을 입력하세요");
+ 			$("#b_name").val("");
+ 			$("#b_name").focus();
+ 			return;
+ 		}
+ 		
+ 		//page를 이용한 start 계산
+ 		let start = (page-1) * display + 1
+ 		
+ 		//	jQuery 이용한 Ajax통신
+ 		$.ajax({
+ 			url		:	"news/list.do",
+ 			data	: 	{
+ 							"b_name":b_name,
+ 							"start":start, 
+ 							"display":display
+ 						},
+ 			success	:	function(res_data){
+ 				
+ 				//res_data:news/list.do 호출한 결과 화면(news_list.jsp)
+ 				$("#disp").html(res_data);
+ 				
+ 			},
+ 			error	:	function(err){
+ 				alert(err.responseText);
+ 			}
+ 		});
+ 	}
+ </script>
+</head>
+<body>
+<form class="form-inline">
+	<div id="box">
+		상품명:<input class="form_control" id="b_name">
+				<input class="btn btn-primary" type="button" value="검색"  onclick="find();">
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+		페이지:<select class="form-control" id="page">
+			<option value="1">1 페이지</option>
+			<option value="2">2 페이지</option>
+			<option value="3">3 페이지</option>
+			<option value="4">4 페이지</option>
+			<option value="5">5 페이지</option>
+		
+		</select>
+		
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
+		조회건수: <select class="form-control" id="display">
+					<option value="10">10개씩 보기</option>
+					<option value="20">20개씩 보기</option>
+					<option value="30">30개씩 보기</option>
+				</select>
+		<hr>
+		
+		<!-- 검색결과 영역 -->
+		<div id="disp"></div>
+	</div>
+</form>
+</body>
+</html>

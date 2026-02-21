@@ -1,0 +1,28 @@
+@Service
+@Transactional
+public class MybaService {
+	@Autowired
+	TestMapper mapper;
+	
+	@Autowired
+	PlatformTransactionManager manager;
+	
+	public int totSize(String str) {
+		
+		TransactionStatus status = 
+				manager.getTransaction(new DefaultTransactionDefinition());
+		int totSize =0;
+		try {
+			totSize = mapper.totSize("");
+			if(totSize!=0)
+                                            manager.commit(status);
+                                        else
+			     manager.rollback(status);
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return totSize;
+	}
+	
+}

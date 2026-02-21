@@ -1,0 +1,20 @@
+package com.example.boot_20220915;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+// #####[ 서비스, 컨트롤러, 환경설정 ]#######
+@ComponentScan(basePackages = {
+	"com.example.service", 
+	"com.example.controller"
+})
+
+
+@SpringBootApplication
+public class Boot20220915Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Boot20220915Application.class, args);
+	}
+}

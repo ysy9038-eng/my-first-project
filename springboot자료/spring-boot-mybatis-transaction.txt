@@ -1,0 +1,2 @@
+    //해당메소드내에서 Exception발생시 rollback된다
+    @Transactional(rollbackFor = Exception.class)

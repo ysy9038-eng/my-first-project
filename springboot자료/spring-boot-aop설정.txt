@@ -1,0 +1,28 @@
+<dependency>  
+<groupId>org.springframework.boot</groupId>  
+<artifactId>spring-boot-starter-aop</artifactId>  
+<version>2.2.2.RELEASE</version>  
+</dependency>
+
+
+############[main설정]########################
+@SpringBootApplication
+@EnableAspectJAutoProxy(proxyTargetClass = true) <=요것추가
+public class AopBeforeAdviceExampleApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(AopBeforeAdviceExampleApplication.class, args);
+    }
+}
+
+
+#############[Advice]##########################
+@Aspect
+@Component
+public class EmployeeServiceAspect {
+
+    @Before(value = "execution(* com.javatpoint.service.EmployeeService.*(..)) and args(empId, fname, sname)")
+    public void beforeAdvice(JoinPoint joinPoint, String empId, String fname, String sname) {
+        System.out.println("Before method:" + joinPoint.getSignature());
+        System.out.println("Creating Employee with first name - " + fname + ", second name - " + sname + " and id - " + empId);
+    }
+}

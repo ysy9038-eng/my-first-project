@@ -1,0 +1,68 @@
+[Âü°í URL : https://howtodoinjava.com/spring-boot2/spring-remoting-rmi-hessian/]
+
+
+################[RMI Server]#############################################
+###[Service]#####
+
+public interface HelloWorldRMI 
+{
+  public String sayHelloRmi(String msg);
+}
+
+ 
+public class HelloWorldRMIimpl implements HelloWorldRMI {
+ 
+  @Override
+  public String sayHelloRmi(String msg) {
+    System.out.println("================Server Side ========================");
+    System.out.println("Inside Rmi IMPL - Incoming msg : " + msg);
+    return "Hello " + msg + " :: Response time - > " + new Date();
+  }
+}
+
+ 
+###[main pacakge]#####
+@Configuration
+public class Config {
+   
+  @Bean
+  RemoteExporter registerRMIExporter() {
+     
+    RmiServiceExporter exporter = new RmiServiceExporter();
+    exporter.setServiceName("helloworldrmi");
+    exporter.setServiceInterface(HelloWorldRMI.class);
+    exporter.setService(new HelloWorldRMIimpl());
+     
+    return exporter;
+  }
+}
+
+
+
+################[RMI Client]#############################################
+
+ 
+@SpringBootApplication
+public class SpringRmiClientApplication {
+ 
+  @Bean
+  RmiProxyFactoryBean rmiProxy() {
+    RmiProxyFactoryBean bean = new RmiProxyFactoryBean();
+    bean.setServiceInterface(HelloWorldRMI.class);
+    bean.setServiceUrl("rmi://localhost:1099/helloworldrmi");
+ 
+    return bean;
+  }
+ 
+  public static void main(String[] args) 
+  {
+    HelloWorldRMI helloWorldRMI = SpringApplication.run(SpringRmiClientApplication.class, args)
+                        .getBean(HelloWorldRMI.class);
+ 
+    System.out.println("================Client Side ========================");
+ 
+    System.out.println(helloWorldRMI.sayHelloRmi("Tom"));
+  }
+}
+
+

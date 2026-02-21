@@ -1,0 +1,29 @@
+package com.example.bbs.vo;
+
+import org.apache.ibatis.type.Alias;
+
+import lombok.Data;
+
+@Data
+@Alias("board")
+public class BoardVo {
+
+	int    no;
+	
+	int    b_idx;
+	String b_subject; 
+	String b_content;
+	String b_ip;
+	int    b_readhit;
+	String b_regdate;
+	String b_modifydate;
+	int    mem_idx;
+	String mem_name;
+	int    b_ref;
+	int    b_step;
+	int    b_depth;
+	String b_use;
+	
+	int    cmt_count;
+	
+}
